@@ -9,12 +9,14 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AuthorsModule } from './modules/authors/authors.module';
+import { MainComponent } from './shared/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,7 @@ import { AuthorsModule } from './modules/authors/authors.module';
     AppRoutingModule,
     AuthorsModule
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

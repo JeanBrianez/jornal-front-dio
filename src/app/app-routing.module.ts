@@ -2,21 +2,23 @@ import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AuthorsModule } from './modules/authors/authors.module';
 import { AuthorListComponent } from './modules/authors/author-list/author-list.component';
+import { MainComponent } from './shared/main/main.component';
+import { AuthorFormComponent } from './modules/authors/author-form/author-form.component';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'main',
-    pathMatch: 'full'
+    path: '', 
+    component: MainComponent
   },
   {
-    path: 'main', 
-    component: AppComponent
-  },
-  {
-    path: 'authors',
-    component: AuthorListComponent
+    path: 'cadastro',
+    children: [
+      {
+        path: '',
+        component: AuthorFormComponent
+      }]
   }/*,
   {
     path: 'details/:id', 
@@ -36,7 +38,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    AuthorsModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

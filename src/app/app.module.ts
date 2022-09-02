@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AuthorsModule } from './modules/authors/authors.module';
 import { MainComponent } from './shared/main/main.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,10 @@ import { MainComponent } from './shared/main/main.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    HttpClientModule,
     AppRoutingModule,
-    AuthorsModule
+    MaterialModule,
+    AuthorsModule  
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt'}],
   bootstrap: [AppComponent]

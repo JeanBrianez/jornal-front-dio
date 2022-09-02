@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidInputService } from 'src/app/services/input/valid-input.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ValidInputService } from 'src/app/core/input/valid-input.service';
+import { IntegrationService } from 'src/app/core/integration.service';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
+import { Alert } from 'src/app/shared/models/alert';
+import { Author } from 'src/app/shared/models/author.model';
 
 @Component({
   selector: 'app-author-form',
@@ -9,11 +15,15 @@ import { ValidInputService } from 'src/app/services/input/valid-input.service';
 })
 export class AuthorFormComponent implements OnInit {
 
-  cadastro: FormGroup | undefined;
+  cadastro!: FormGroup;
+  cargos!: Array<string>;
 
   constructor(
     public valid: ValidInputService,
-    private fb: FormBuilder
+    public dialog: MatDialog,
+    private fb: FormBuilder,
+    private dataService: IntegrationService,
+    private router: Router
     ) { }
 
   get form(): {[key: string]: AbstractControl;} {
@@ -23,9 +33,10 @@ export class AuthorFormComponent implements OnInit {
   ngOnInit() {
     this.cadastro = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      role: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      role: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]]
     });
+    this.cargos = ['Autor','TI','Direção'];
   }
 
   submit(): void {
@@ -33,10 +44,45 @@ export class AuthorFormComponent implements OnInit {
     if (this.cadastro!.invalid) {
       return;
     }
-    alert('SUCESSO\n\n'+ JSON.stringify(this.cadastro!.value, null, 4));
+    const data = this.cadastro!.getRawValue() as Author;
+    this.save(data);
   }
 
   reset(): void {
     this.cadastro!.reset();
+  }
+
+  private save(author: Author): void {
+    this.dataService.save(author).subscribe(
+      () => {
+        const config = {
+          data: {
+            hasCancelBtn: true,
+            btnSuccess: 'Ir para a listagem',
+            btnCancel: 'Cadastrar um novo Autor',
+            colorSuccess: 'accent', 
+            colorCancel: 'primary'          
+          } as Alert
+        };
+        const dialogRef = this.dialog.open(AlertComponent, config);
+        dialogRef.afterClosed().subscribe((option: boolean) => {
+          if (option) {
+            this.router.navigateByUrl('');
+          } else {
+            this.reset();
+          }
+        })},
+      () => {
+        const config = {
+          data: {
+            title: 'Erro ao salvar o registro',
+            description: 'Erro do Servidor, contate a administração',
+            btnSuccess: 'Fechar',
+            colorSuccess: 'warn'        
+          } as Alert
+        };
+        this.dialog.open(AlertComponent, config);
+      }
+    )
   }
 }

@@ -1,19 +1,40 @@
 {
-  "posts": [
+  "authors": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Maria",
+      "role": "TI",
+      "email": "maria@mail"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "Jean",
+      "role": "TI",
+      "email": "jean@mail"
+    },
+    {
+      "name": "Giovana",
+      "role": "Autor",
+      "email": "gih@mail",
+      "id": 3
+    },
+    {
+      "name": "Luiza",
+      "role": "Autor",
+      "email": "lu@mail",
+      "id": 4
+    },
+    {
+      "name": "Caio",
+      "role": "Autor",
+      "email": "caio@mail.com",
+      "id": 5
+    },
+    {
+      "name": "João",
+      "role": "Direção",
+      "email": "joao@mail",
+      "id": 6
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

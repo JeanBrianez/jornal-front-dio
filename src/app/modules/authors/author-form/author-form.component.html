@@ -3,24 +3,9 @@
   <mat-card class="center width50" *ngIf="cadastro" >
     <form autocomplete="off" novalidate [formGroup]="cadastro" (ngSubmit)="submit()" (ngReset)="reset()">
       <mat-card-content>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Nome" name="name" formControlName="name" [formGroup]="cadastro">
-          <mat-error *ngIf="valid.hasErrorValidate(form['name'], 'required')">Campo Obrigatório</mat-error>
-          <mat-error *ngIf="valid.hasErrorValidate(form['name'], 'minlength')">Mínimo 2 Caracteres</mat-error>
-          <mat-error *ngIf="valid.hasErrorValidate(form['name'], 'maxlength')">Máximo 100 Caracteres</mat-error>
-        </mat-form-field>        
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Cargo" name="role" formControlName="role" [formGroup]="cadastro">
-          <mat-error *ngIf="valid.hasErrorValidate(form['name'], 'required')">Campo Obrigatório</mat-error>
-          <mat-error *ngIf="valid.hasErrorValidate(form['name'], 'minlength')">Mínimo 2 Caracteres</mat-error>
-          <mat-error *ngIf="valid.hasErrorValidate(form['name'], 'maxlength')">Máximo 100 Caracteres</mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="E-mail" name="email" formControlName="email" [formGroup]="cadastro">
-          <mat-error *ngIf="valid.hasErrorValidate(form['name'], 'required')">Campo Obrigatório</mat-error>
-          <mat-error *ngIf="valid.hasErrorValidate(form['name'], 'minlength')">Mínimo 2 Caracteres</mat-error>
-          <mat-error *ngIf="valid.hasErrorValidate(form['name'], 'maxlength')">Máximo 100 Caracteres</mat-error>
-        </mat-form-field>  
+        <app-input-text holder="Nome" controlName="name" [formGroup]="cadastro"></app-input-text>       
+        <app-input-select holder="Cargo" [options]="cargos" controlName="role" [formGroup]="cadastro"></app-input-select>
+        <app-input-text holder="Email" controlName="email" [formGroup]="cadastro"></app-input-text> 
       </mat-card-content>
       <mat-card-actions>
         <button type="submit" color="accent" mat-raised-button>Salvar</button>

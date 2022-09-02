@@ -1,7 +1,7 @@
 import { Post } from "./post.model";
 
-export type Image = {
-    id: number,
+export interface Image {
+    id?: number,
     name: string,
     images: Post,
     description: string,

@@ -12,4 +12,6 @@ export class AuthorListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  open() {}
+
 }

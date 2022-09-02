@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
-import { ValidInputService } from 'src/app/services/input/valid-input.service';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValidInputService } from 'src/app/core/input/valid-input.service';
 
 @Component({
   selector: 'app-input-text',
@@ -14,11 +14,13 @@ export class InputTextComponent{
   @Input() controlName!: string;
 
 
-  constructor(public valid: ValidInputService) { }
-
+  constructor(
+    public valid: ValidInputService    
+    ) { }
   
   get formControl() : AbstractControl {
     return this.formGroup.controls[this.controlName];
   }
-  
+
+  ngOnInit() {}
 }

@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>{{alert.title}}</h1>
+<div mat-dialog-content>
+    <p>{{alert.description}}</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [color]="alert.colorSuccess" [mat-dialog-close]="true">{{alert.btnSuccess}}</button>
+    <button mat-button [color]="alert.colorCancel" [mat-dialog-close]="false" *ngIf="alert.hasCancelBtn">{{alert.btnCancel}}</button>
+</div>
+

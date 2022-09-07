@@ -5,13 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { AuthorFormComponent } from './author-form/author-form.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { AuthorDetailComponent } from './author-detail/author-detail.component';
 
 
 
 @NgModule({
   declarations: [
     AuthorListComponent, 
-    AuthorFormComponent
+    AuthorFormComponent, AuthorDetailComponent
   ],
   imports: [
     CommonModule,
@@ -19,6 +20,9 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
     ReactiveFormsModule,
     FormsModule,
     ComponentsModule
+  ],
+  exports: [
+    AuthorListComponent
   ]
 })
 export class AuthorsModule { }

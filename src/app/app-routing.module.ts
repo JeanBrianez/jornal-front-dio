@@ -4,13 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthorsModule } from './modules/authors/authors.module';
 import { AuthorListComponent } from './modules/authors/author-list/author-list.component';
-import { MainComponent } from './shared/main/main.component';
 import { AuthorFormComponent } from './modules/authors/author-form/author-form.component';
 
 const routes: Routes = [
   {
     path: '', 
-    component: MainComponent
+    component: AuthorListComponent
   },
   {
     path: 'cadastro',

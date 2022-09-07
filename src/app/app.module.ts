@@ -9,15 +9,14 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AuthorsModule } from './modules/authors/authors.module';
-import { MainComponent } from './shared/main/main.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
-    MainComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
+    InfiniteScrollModule,
     AuthorsModule  
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt'}],

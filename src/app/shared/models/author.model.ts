@@ -6,6 +6,7 @@ export interface Author {
     name: string,
     role: string,
     email: string,
+    img?: string,
     authorPages?: [Page],
     authorPosts?: [Post],
     created?: Date,

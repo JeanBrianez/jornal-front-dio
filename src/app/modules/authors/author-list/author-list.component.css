@@ -1,0 +1,40 @@
+.list-content {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - 20px);
+    justify-content: space-between;
+    padding: 10px;    
+}
+
+.list-filter {
+    width: calc(100% - 50px);
+}
+
+.mat-card {
+    margin-bottom: 10px;
+}
+
+.mat-card-image {
+    width: 182px;
+    height: 268px;
+    margin: auto;
+    display: block;
+}
+
+@media screen and (min-width: 525px) {
+        .list-card {
+            width: calc(50% - 52px);
+        }
+}
+
+@media screen and (min-width: 800px) {
+    .list-card {
+        width: calc(33.333% - 52px);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .list-card {
+        width: calc(25% - 52px);
+    }
+}

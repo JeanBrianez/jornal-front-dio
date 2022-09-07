@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ValidInputService } from 'src/app/core/input/valid-input.service';
 import { IntegrationService } from 'src/app/core/integration.service';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
-import { Alert } from 'src/app/shared/models/alert';
+import { Alert } from 'src/app/shared/models/aux-models/alert';
 import { Author } from 'src/app/shared/models/author.model';
 
 @Component({
